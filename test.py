@@ -1,6 +1,5 @@
 #!/usr/bin/python
-using unittest
-+import unittest
+import unittest
 
 class Stack:
   __stack = []
