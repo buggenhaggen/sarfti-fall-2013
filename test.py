@@ -38,6 +38,22 @@ class TestStack(unittest.TestCase):
 		elem = st.pop()
 		self.assertEqual(elem, 0)
 		self.assertEqual(st.length(), 0)
+	def test_pop2(self):
+		st = Stack()
+		st.push(0)
+		st.push(1)
+		st.push(2)
+		st.pop()
+		st.push(3)
+		self.assertEqual(st.length(), 3)
+                elem = st.pop()
+                self.assertEqual(elem, 3)
+                elem = st.pop()
+                self.assertEqual(elem, 1)
+                elem = st.pop()
+                self.assertEqual(elem, 0)
+                self.assertEqual(st.length(), 0)
+
 
 
 if __name__ == "__main__":
