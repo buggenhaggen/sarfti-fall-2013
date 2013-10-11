@@ -1,10 +1,11 @@
 #!/usr/bin/python
 
 import subprocess
+import sys
 
-ret = subprocess.call("python ./AKorezin/task_2/helloworld.py", shell=True)
+ret = subprocess.call("python ./AKorezin/task_3/helloworld.py", shell=True)
 if ret:
-    return ret
+    sys.exit(ret)
 
 
-return ret
+sys.exit(ret)
