@@ -1,0 +1,104 @@
+//пример программы на агрегацию
+
+
+#include <iostream>
+using namespace std;
+ 
+class F {
+  public:
+    F() {f = 0;}
+    int f;
+    void mf() {
+      f += 1;
+      cout << "f = " << f << endl;
+    }
+};
+class K {
+  public:
+    K() {k = 0;}
+    int k;
+    void mk() {
+      k += 1;
+      cout << "k = " << k << endl;
+    }
+};
+class D {
+  public:
+    D() {d = 0;}
+    int d;
+    void md() {
+      d += 1;
+      cout << "d = " << d << endl;
+    }
+};
+class E {
+  public:
+    E() {e = 0;}
+    int e;
+    void me() {
+      e += 1;
+      cout << "e = " << e << endl;
+    }
+};
+class B {
+  public:
+    B() {}
+    void link(K &k) {this->k = &k;}
+    void link(D &d) {this->d = &d;}
+    void link(E &e) {this->e = &e;}
+    K* mbk() {return k;}
+    D* mbd() {return d;}
+    E* mbe() {return e;}
+  private:
+    K* k;
+    D* d;
+    E* e;
+};
+class C {
+  public:
+    C() {}
+    void link(F &f) {this->f = &f;}
+    F* mcf() {return f;}
+  private:
+    F* f;
+};
+class J {
+  public:
+    J() {j = 0;}
+    int j;
+    void mj() {
+      j += 1;
+      cout << "j = " << j << endl;
+    }
+ 
+};
+class A {
+  public:
+    A() {}
+    void link(B &b) {this->b = &b;}
+    void link(C &c) {this->c = &c;}
+    void link(J &j) {this->j = &j;}
+    B* mab() {return b;}
+    C* mac() {return c;}
+    J* maj() {return j;}
+  private:
+    B* b;
+    C* c;
+    J* j;
+};
+ 
+int main()
+{
+  cout << "aggregation 1\n";
+  K k; D d; E e; F f; B b; C c; J j; A a;
+  a.link(b); a.link(c); a.link(j);
+  b.link(k); b.link(d); b.link(e);
+  c.link(f);
+ 
+  a.mac()->mcf()->mf();
+  a.mab()->mbk()->mk();
+  a.mab()->mbd()->md();
+  a.mab()->mbe()->me();
+  a.maj()->mj();
+  return 0;
+}
