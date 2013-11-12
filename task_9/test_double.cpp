@@ -1,5 +1,6 @@
 #include <iostream>
 #include <math.h>
+#include <conio.h>
 
 using namespace std;
 int main(void)
@@ -9,11 +10,12 @@ int main(void)
         rez=num1/num2;
         cout<<rez<<endl;
         
-        num_1=0;
+        num1=0;
         rez=num1/num2;
         cout<<rez<<endl;        
         
         num1=-1;
-        rez=num_1/num2;
+        rez=num1/num2;
         cout<<rez<<endl;
+        getch();
 }
