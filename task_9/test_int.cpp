@@ -1,18 +1,21 @@
 #include <iostream>
 #include <math.h>
+#include <conio.h>
 
 using namespace std;
 int main(void)
 {
-        int num_1=1,num_2=0;
-        rez=num_1/num_2;
+        int num1=1,num2=0;
+        int rez;
+        rez=num1/num2;
         cout<<rez<<endl;
         
-        num_1=0;
-        rez=num_1/num_2;
+        num1=0;
+        rez=num1/num2;
         cout<<rez<<endl;        
         
-        num_1=-1;
-        rez=num_1/num_2;
+        num1=-1;
+        rez=num1/num2;
         cout<<rez<<endl;
+        getch();
 }
