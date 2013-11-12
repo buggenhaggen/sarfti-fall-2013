@@ -5,14 +5,14 @@ using namespace std;
 
 class Class_1
   {
-  protected: //защищенные данные
-     int num1;
-  friend int function1_num2(Class_1 &);//дружественная функция
-  void function2_num2(int num2)//описание ф.
+  protected: //Р·Р°С‰РёС‰РµРЅРЅС‹Рµ РґР°РЅРЅС‹Рµ
+  int num1;
+  friend int function1_num2(Class_1 &);//РґСЂСѓР¶РµСЃС‚РІРµРЅ. С„.
+  void function2_num2(int num2)//РѕРїРёСЃР°РЅРёРµ С„
   {
     num1=num2+num2*2;
    };
-  public://публичные данные
+  public://РїСѓР±Р»РёС‡РЅС‹Рµ РґР°РЅРЅС‹Рµ
    int function1_num1(void)
       {
         return num1;
@@ -28,7 +28,7 @@ class Class_1
   }
   int main(void)
   {
-    Class_1 x;//создание объекта x, класса Class_1
+    Class_1 x;//СЃРѕР·РґР°РЅРёРµ РѕР±СЉРµРєС‚Р° С…, РїСЂРµРЅР°РґР»РµР¶Р°С‰РµРіРѕ РєР»Р°СЃСЃСѓClass_1
     int f=function1_num2(x);
     return 0;
     getch();
