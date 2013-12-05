@@ -13,7 +13,7 @@ Wall::Wall()
 
 int Wall::getErr()
 {
-return error;
+	return error;
 }
 
 int Wall::fill(QString filename)
@@ -39,12 +39,15 @@ int Wall::fill(QString filename)
 		return 2;
 	}
 
-	QString wall = QString(file.readLine(1000));
-	QStringList list=wall.split(", ");
-	for (int i=0;i<list.size();i++)
-		walllist<<list.at(i).toInt();
-
-		return 1;
+	QString wall = QString(file.readLine());
+	QRegExp rxnumber ("\\d+");
+	int pos=0;
+	while ((pos=rxnumber.indexIn(wall, pos)) != -1)
+	{
+		walllist<<rxnumber.capturedTexts().at(0).toInt();
+		pos+= rxnumber.matchedLength();
+	}
+	return 1;
 }
 
 void Wall::startSet(void)
