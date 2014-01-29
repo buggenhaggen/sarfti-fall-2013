@@ -1,13 +1,12 @@
 #include <stdio.h>
-#include <conio.h>
 #include <iostream>
 using namespace std;
-//функция для вычисления количества воды скопившейся между стен
+//С„СѓРЅРєС†РёСЏ РґР»СЏ РІС‹С‡РёСЃР»РµРЅРёСЏ РєРѕР»РёС‡РµСЃС‚РІР° РІРѕРґС‹ СЃРєРѕРїРёРІС€РµР№СЃСЏ РјРµР¶РґСѓ СЃС‚РµРЅ
 int calculate(int *massiv, int size) 
 {
 	int i, water = 0, result = 0, last_wall = 0;
 	int current_height = massiv[0];
-	//проходим в прямом направлении
+	//РїСЂРѕС…РѕРґРёРј РІ РїСЂСЏРјРѕРј РЅР°РїСЂР°РІР»РµРЅРёРё
 	for (i = 1; i < size; i++) 
 	{
 		if (massiv[i] >= current_height) 
@@ -22,7 +21,7 @@ int calculate(int *massiv, int size)
 			water += current_height - massiv[i];            
 		}
 	}
-	//проходим в обратном направлении
+	//РїСЂРѕС…РѕРґРёРј РІ РѕР±СЂР°С‚РЅРѕРј РЅР°РїСЂР°РІР»РµРЅРёРё
 	current_height = massiv[size - 1];
 	water = 0;
 	for (i = size - 2; i >= last_wall; i--) 
@@ -43,19 +42,18 @@ int calculate(int *massiv, int size)
 }
 int main()
 {
-	setlocale(LC_ALL, "Russian");//поддержка русского языка
+	setlocale(LC_ALL, "Russian");//РїРѕРґРґРµСЂР¶РєР° СЂСѓСЃСЃРєРѕРіРѕ СЏР·С‹РєР°
 	int size;
-	cout<<"Введите количество стен: ";
+	cout<<"Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚РµРЅ: ";
 	cin>>size;
-	int *massiv = new int[size];//тестовые данные {2,1,6,3,1,2,5,4,5} = 11
-	cout<<"Задайте высоту стен:"<<endl;
+	int *massiv = new int[size];//С‚РµСЃС‚РѕРІС‹Рµ РґР°РЅРЅС‹Рµ {2,1,6,3,1,2,5,4,5} = 11
+	cout<<"Р—Р°РґР°Р№С‚Рµ РІС‹СЃРѕС‚Сѓ СЃС‚РµРЅ:"<<endl;
 	for (int i = 0 ; i < size; i++)
 	{
 		cout<<i+1<<": ";
 		cin>>massiv[i];
 	}
-	cout<<"Количество воды скопившейся между стен = "<<calculate(massiv,9)<<endl;
+	cout<<"РљРѕР»РёС‡РµСЃС‚РІРѕ РІРѕРґС‹ СЃРєРѕРїРёРІС€РµР№СЃСЏ РјРµР¶РґСѓ СЃС‚РµРЅ = "<<calculate(massiv,size)<<endl;
 	delete []massiv;
-	_getch();
 	return 0;
 }
