@@ -1,57 +1,47 @@
 
 #include <iostream>
-#include <conio.h>
 
 using namespace std;
-
-class S
+const int n=7;
+int first, last;
+//С„СѓРЅРєС†РёСЏ СЃРѕСЂС‚РёСЂРѕРІРєРё
+void quicksort(int *mas, int first, int last)
 {
-public:
-void Sort(int* A, int b, int c)// сортировка
+int mid, count;
+int f=first, l=last;
+mid=mas[(f+l) / 2]; //РІС‹С‡РёСЃР»РµРЅРёРµ РѕРїРѕСЂРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р°
+do
 {
-	
-int x = A[b + (c - b) / 2];
-    int i = b;
-    int j = c;
-    while(i <= j)
-    {
-        while(A[i] < x) i++;
-        while(A[j] > x) j--;
-        if(i <= j)
-        {
-            swap(A[i], A[j]);
-            i++;
-            j--;
-        }
-    }
-    if (i<c)
-                Sort( A, i, c);
-    
-    if (b<j)    
-        Sort( A, b, j);    
-};
-};
-//главная функция
+while (mas[f]<mid) f++;
+while (mas[l]>mid) l--;
+if (f<=l) //РїРµСЂРµСЃС‚Р°РЅРѕРІРєР° СЌР»РµРјРµРЅС‚РѕРІ
+{
+count=mas[f];
+mas[f]=mas[l];
+mas[l]=count;
+f++;
+l--;
+}
+} while (f<l);
+if (first<l) quicksort(mas, first, l);
+if (f<last) quicksort(mas, f, last);
+}
+//РіР»Р°РІРЅР°СЏ С„СѓРЅРєС†РёСЏ
 void main()
 {
-	S obj;
-setlocale(LC_ALL, "Rus");
-int i, n;
-int *A=new int[100];
-cout<<"Введите размер массива  "; 
-cin>>n;
-cout<<"Массив: ";
-for (int i=1; i<=n; i++)
+setlocale(LC_ALL,"Rus");
+int *A=new int[n];
+srand(time(NULL));
+cout<<"РСЃС…РѕРґРЅС‹Р№ РјР°СЃСЃРёРІ: ";
+for (int i=0; i<n; i++)
 {
-	A[i]=0+rand()%100;
-	cout<<A[i]<<" ";
+A[i]=rand()%10;
+cout<<A[i]<<" ";
 }
-cout<<"\n";
-obj.Sort(A, 0, n-1); 
-cout<<"Отсортированный массив: "; 
-for (i=1; i<=n; i++)
-{
-	cout<<A[i]<<" ";
-}
-getch();
+first=0; last=n-1;
+quicksort(A, first, last);
+cout<<endl<<"Р РµР·СѓР»СЊС‚РёСЂСѓСЋС‰РёР№ РјР°СЃСЃРёРІ: ";
+for (int i=0; i<n; i++) cout<<A[i]<<" ";
+delete []A;
+
 }
